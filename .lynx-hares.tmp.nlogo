@@ -199,7 +199,7 @@ grass-regrowth-time
 grass-regrowth-time
 0
 100
-30.0
+65.0
 1
 1
 NIL
@@ -214,7 +214,7 @@ reproduction-chance
 reproduction-chance
 0
 100
-20.0
+30.0
 1
 1
 NIL
@@ -229,7 +229,7 @@ reproduction-energy-threshold
 reproduction-energy-threshold
 0
 100
-75.0
+65.0
 1
 1
 NIL
@@ -244,7 +244,7 @@ grass-regrowth-chance
 grass-regrowth-chance
 0
 100
-66.0
+50.0
 1
 1
 NIL
