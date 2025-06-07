@@ -69,7 +69,7 @@ end
 
 
 to go
-  if ticks = 500 [stop]
+  ;if ticks = 500 [stop] ; Stop at tick 500
 
   ask hares[
     move
@@ -102,13 +102,13 @@ to go
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-414
-64
-888
-539
+389
+40
+903
+555
 -1
 -1
-14.121212121212123
+15.33333333333334
 1
 10
 1
@@ -171,7 +171,7 @@ initial-hares
 initial-hares
 0
 100
-39.0
+55.0
 1
 1
 NIL
@@ -186,7 +186,7 @@ initial-lynxes
 initial-lynxes
 0
 100
-37.0
+25.0
 1
 1
 NIL
@@ -256,7 +256,7 @@ PLOT
 23
 386
 196
-536
+506
 Population Count
 NIL
 NIL
@@ -353,9 +353,9 @@ Hare-Lynx Ecosystem
 
 PLOT
 208
-385
+386
 378
-535
+506
 Food Count
 NIL
 NIL
@@ -368,6 +368,39 @@ false
 "" ""
 PENS
 "default" 1.0 0 -14439633 true "" "plot count patches with [pcolor = green]"
+
+MONITOR
+112
+510
+196
+555
+Hares
+count hares
+17
+1
+11
+
+MONITOR
+22
+510
+108
+555
+Lynxes
+count lynxes
+17
+1
+11
+
+MONITOR
+208
+511
+379
+556
+Food Count
+count patches with [pcolor = green]
+17
+1
+11
 
 @#$#@#$#@
 ## WHAT IS IT?
