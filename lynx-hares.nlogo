@@ -100,13 +100,13 @@ to go
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-463
-10
-900
-448
+431
+64
+905
+539
 -1
 -1
-13.0
+14.121212121212123
 1
 10
 1
@@ -127,10 +127,10 @@ ticks
 30.0
 
 BUTTON
-24
-27
-87
-60
+26
+85
+144
+118
 Setup
 setup
 NIL
@@ -144,10 +144,10 @@ NIL
 1
 
 BUTTON
-101
-27
-164
-60
+154
+84
+272
+117
 Go
 go
 T
@@ -161,10 +161,10 @@ NIL
 1
 
 SLIDER
-19
-76
-191
-109
+25
+153
+197
+186
 initial-hares
 initial-hares
 0
@@ -176,10 +176,10 @@ NIL
 HORIZONTAL
 
 SLIDER
-241
-72
-413
-105
+207
+153
+379
+186
 initial-lynxes
 initial-lynxes
 0
@@ -191,25 +191,25 @@ NIL
 HORIZONTAL
 
 SLIDER
-17
-167
-189
-200
+24
+211
+196
+244
 grass-regrowth-time
 grass-regrowth-time
 0
 100
-49.0
+50.0
 1
 1
 NIL
 HORIZONTAL
 
 SLIDER
-22
-286
-194
-319
+23
+330
+195
+363
 reproduction-chance
 reproduction-chance
 0
@@ -221,10 +221,10 @@ NIL
 HORIZONTAL
 
 SLIDER
-23
-319
-232
-352
+207
+330
+416
+363
 reproduction-energy-threshold
 reproduction-energy-threshold
 0
@@ -236,10 +236,10 @@ NIL
 HORIZONTAL
 
 SLIDER
-19
-201
-191
-234
+207
+210
+379
+243
 grass-regrowth-chance
 grass-regrowth-chance
 0
@@ -251,10 +251,10 @@ NIL
 HORIZONTAL
 
 PLOT
-66
-420
-266
-570
+23
+386
+415
+536
 Population Count
 NIL
 NIL
@@ -270,10 +270,10 @@ PENS
 "lynxes" 1.0 0 -2674135 true "" "plot count lynxes"
 
 SLIDER
-52
-239
-224
-272
+23
+271
+195
+304
 grass-energy-gain
 grass-energy-gain
 0
@@ -285,10 +285,10 @@ NIL
 HORIZONTAL
 
 SLIDER
-286
-193
-458
-226
+208
+270
+380
+303
 prey-energy-gain
 prey-energy-gain
 0
@@ -298,6 +298,56 @@ prey-energy-gain
 1
 NIL
 HORIZONTAL
+
+TEXTBOX
+26
+132
+176
+150
+Initialization
+14
+0.0
+1
+
+TEXTBOX
+25
+191
+175
+209
+Grass Settings
+14
+0.0
+1
+
+TEXTBOX
+25
+251
+175
+269
+Energy Gain Settings
+14
+0.0
+1
+
+TEXTBOX
+25
+311
+175
+329
+Reproduction Settings
+14
+0.0
+1
+
+TEXTBOX
+28
+45
+321
+103
+Hare-Lynx Ecosystem
+24
+0.0
+1
 
 @#$#@#$#@
 ## WHAT IS IT?
