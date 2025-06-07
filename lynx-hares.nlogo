@@ -71,6 +71,10 @@ end
 to go
   ;if ticks = 500 [stop] ; Stop at tick 500
 
+  ;if count hares = 0 [stop] ; Stop when hares died out
+  ;if count lynxes = 0 [stop] ; Stop when lynxes died out
+  ;if count patches with [pcolor = green] = 0 [stop] ; Stop when food runs out
+
   ask hares[
     move
     eat-plants
@@ -171,7 +175,7 @@ initial-hares
 initial-hares
 0
 100
-55.0
+100.0
 1
 1
 NIL
@@ -186,7 +190,7 @@ initial-lynxes
 initial-lynxes
 0
 100
-25.0
+50.0
 1
 1
 NIL
@@ -231,7 +235,7 @@ reproduction-energy-threshold
 reproduction-energy-threshold
 0
 100
-79.0
+78.0
 1
 1
 NIL
