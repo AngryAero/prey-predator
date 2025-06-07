@@ -69,6 +69,8 @@ end
 
 
 to go
+  if ticks = 500 [stop]
+
   ask hares[
     move
     eat-plants
@@ -169,7 +171,7 @@ initial-hares
 initial-hares
 0
 100
-24.0
+39.0
 1
 1
 NIL
@@ -184,7 +186,7 @@ initial-lynxes
 initial-lynxes
 0
 100
-24.0
+37.0
 1
 1
 NIL
@@ -253,7 +255,7 @@ HORIZONTAL
 PLOT
 23
 386
-379
+196
 536
 Population Count
 NIL
@@ -348,6 +350,24 @@ Hare-Lynx Ecosystem
 24
 0.0
 1
+
+PLOT
+208
+385
+378
+535
+Food Count
+NIL
+NIL
+0.0
+10.0
+0.0
+10.0
+true
+false
+"" ""
+PENS
+"default" 1.0 0 -14439633 true "" "plot count patches with [pcolor = green]"
 
 @#$#@#$#@
 ## WHAT IS IT?
