@@ -100,9 +100,9 @@ to go
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-431
+414
 64
-905
+888
 539
 -1
 -1
@@ -129,7 +129,7 @@ ticks
 BUTTON
 26
 85
-144
+196
 118
 Setup
 setup
@@ -144,10 +144,10 @@ NIL
 1
 
 BUTTON
-154
-84
-272
-117
+208
+85
+379
+118
 Go
 go
 T
@@ -223,7 +223,7 @@ HORIZONTAL
 SLIDER
 207
 330
-416
+378
 363
 reproduction-energy-threshold
 reproduction-energy-threshold
@@ -253,7 +253,7 @@ HORIZONTAL
 PLOT
 23
 386
-415
+379
 536
 Population Count
 NIL
@@ -340,10 +340,10 @@ Reproduction Settings
 1
 
 TEXTBOX
-28
-45
-321
-103
+92
+42
+385
+79
 Hare-Lynx Ecosystem
 24
 0.0
