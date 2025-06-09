@@ -84,6 +84,14 @@ end
 
 
 to go
+  if ticks = max-ticks [
+    print word "Hare population: " count hares
+    print word "Lynx population: " count lynxes
+    print word "Grass population: " count patches with [pcolor = green]
+
+    stop
+
+  ]
   ask hares[
     move
     eat-plants
