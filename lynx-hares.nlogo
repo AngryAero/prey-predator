@@ -20,20 +20,28 @@ to setup
   create-hares initial-hares [
     set size 2
     set color white
-    set energy 100
+    set energy random 100
     setxy random-xcor random-ycor
   ]
   create-lynxes initial-lynxes [
     set size 2
     set color red
-    set energy 100
+    set energy random 100
     setxy random-xcor random-ycor
   ]
 
   ask patches
   [
-    set pcolor green
-    set growth 0
+    ifelse random 100 < 40
+    [
+      set pcolor green
+      set growth 0
+    ]
+    [
+      set pcolor brown
+      set growth random 25
+    ]
+
   ]
   reset-ticks
 end
