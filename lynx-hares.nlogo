@@ -68,8 +68,8 @@ end
 to eat-prey
   let prey one-of hares-here
   if prey != nobody [
-    ask prey [die]
     set energy energy + prey-energy-gain
+    ask prey [die]
   ]
 end
 
@@ -123,18 +123,17 @@ to go
       ]
     ]
   ]
-  set grass-regrowth-chance grass-regrowth-chance + 1
   tick
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-416
-27
-898
-510
+424
+35
+887
+499
 -1
 -1
-7.3
+7.0
 1
 10
 1
@@ -148,8 +147,8 @@ GRAPHICS-WINDOW
 32
 -32
 32
-0
-0
+1
+1
 1
 ticks
 30.0
@@ -157,7 +156,7 @@ ticks
 BUTTON
 25
 85
-195
+124
 118
 Setup
 setup
@@ -172,10 +171,10 @@ NIL
 1
 
 BUTTON
-210
-87
-381
-120
+149
+85
+233
+118
 Go
 go
 T
@@ -189,10 +188,10 @@ NIL
 1
 
 SLIDER
-27
-155
-199
-188
+31
+173
+203
+206
 initial-hares
 initial-hares
 0
@@ -204,25 +203,25 @@ NIL
 HORIZONTAL
 
 SLIDER
-209
-155
-381
-188
+213
+173
+385
+206
 initial-lynxes
 initial-lynxes
 0
 100
-100.0
+50.0
 1
 1
 NIL
 HORIZONTAL
 
 SLIDER
-26
-214
-196
-248
+30
+232
+200
+265
 grass-regrowth-time-base
 grass-regrowth-time-base
 0
@@ -234,10 +233,10 @@ NIL
 HORIZONTAL
 
 SLIDER
-25
-336
-197
-369
+29
+354
+201
+387
 reproduction-chance
 reproduction-chance
 0
@@ -249,10 +248,10 @@ NIL
 HORIZONTAL
 
 SLIDER
-209
-336
-380
-369
+213
+354
+384
+387
 reproduction-energy-threshold
 reproduction-energy-threshold
 0
@@ -264,25 +263,25 @@ NIL
 HORIZONTAL
 
 SLIDER
-210
-213
-382
-246
+214
+231
+386
+264
 grass-regrowth-chance
 grass-regrowth-chance
 0
 100
-38357.0
+66.0
 1
 1
 NIL
 HORIZONTAL
 
 PLOT
-24
-529
-894
-726
+21
+574
+891
+771
 Population Count
 NIL
 NIL
@@ -300,10 +299,10 @@ PENS
 "grass rate" 1.0 0 -14439633 true "" "plot grass-regrowth-time * 10"
 
 SLIDER
-25
-274
-197
-307
+29
+292
+201
+325
 grass-energy-gain
 grass-energy-gain
 0
@@ -315,10 +314,10 @@ NIL
 HORIZONTAL
 
 SLIDER
-210
-273
-382
-306
+214
+291
+386
+324
 prey-energy-gain
 prey-energy-gain
 0
@@ -330,40 +329,40 @@ NIL
 HORIZONTAL
 
 TEXTBOX
-28
-134
-178
+32
 152
+182
+170
 Initialization
 14
 0.0
 1
 
 TEXTBOX
-27
-194
-177
+31
 212
+181
+230
 Grass Settings
 14
 0.0
 1
 
 TEXTBOX
-27
-254
-177
+31
 272
+181
+290
 Energy Gain Settings
 14
 0.0
 1
 
 TEXTBOX
-27
-317
-177
+31
 335
+181
+353
 Reproduction Settings
 14
 0.0
@@ -380,10 +379,10 @@ Hare-Lynx Ecosystem
 1
 
 SLIDER
-25
-376
-197
-409
+29
+394
+201
+427
 reproduction-energy-cost
 reproduction-energy-cost
 0
@@ -396,9 +395,9 @@ HORIZONTAL
 
 SWITCH
 29
-455
-143
-488
+461
+201
+494
 is_seasonal
 is_seasonal
 0
@@ -406,41 +405,67 @@ is_seasonal
 -1000
 
 TEXTBOX
-25
-419
-175
+29
 437
+179
+455
 Season Settings
 14
 0.0
 1
 
 SLIDER
-215
-437
-387
-470
+218
+464
+390
+497
 season-amplitude
 season-amplitude
 0
 10
-10.0
+5.0
 .1
 1
 NIL
 HORIZONTAL
 
 SLIDER
-216
-478
-388
-511
+219
+505
+391
+538
 season-speed
 season-speed
 0.01
 1
-0.15
+0.09
 .01
+1
+NIL
+HORIZONTAL
+
+INPUTBOX
+262
+87
+381
+147
+max-ticks
+-1.0
+1
+0
+Number
+
+SLIDER
+212
+395
+388
+428
+reproduction-efficiency
+reproduction-efficiency
+0
+1
+0.75
+0.01
 1
 NIL
 HORIZONTAL
