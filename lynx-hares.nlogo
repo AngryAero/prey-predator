@@ -74,9 +74,11 @@ to eat-prey
 end
 
 to reproduce
-  if random-float 100 < reproduction-chance and energy > reproduction-energy-threshold[
-    set energy energy - reproduction-energy-cost;(energy / 2)
-    hatch 1
+  if random-float 100 < reproduction-chance and energy > reproduction-energy-threshold [
+    set energy energy - reproduction-energy-cost;
+    hatch 1 [
+      set energy reproduction-energy-cost * reproduction-efficiency
+    ]
   ]
 end
 
