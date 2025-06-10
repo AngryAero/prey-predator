@@ -1,6 +1,10 @@
 breed [hares hare]
 breed [lynxes lynx]
 
+globals [
+  grass-regrowth-time
+]
+
 turtles-own [
   energy
 ]
@@ -11,24 +15,33 @@ patches-own [
 
 to setup
   clear-all
+  set grass-regrowth-time grass-regrowth-time-base
 
   create-hares initial-hares [
     set size 2
     set color white
-    set energy 100
+    set energy random 100
     setxy random-xcor random-ycor
   ]
   create-lynxes initial-lynxes [
     set size 2
     set color red
-    set energy 100
+    set energy random 100
     setxy random-xcor random-ycor
   ]
 
   ask patches
   [
-    set pcolor green
-    set growth 0
+    ifelse random 100 < 40
+    [
+      set pcolor green
+      set growth 0
+    ]
+    [
+      set pcolor brown
+      set growth random 25
+    ]
+
   ]
   reset-ticks
 end
@@ -55,26 +68,30 @@ end
 to eat-prey
   let prey one-of hares-here
   if prey != nobody [
-    ask prey [die]
     set energy energy + prey-energy-gain
+    ask prey [die]
   ]
 end
 
 to reproduce
-  if random-float 100 < reproduction-chance and energy > reproduction-energy-threshold[
-    set energy (energy / 2)
-    hatch 1
+  if random-float 100 < reproduction-chance and energy > reproduction-energy-threshold [
+    set energy energy - reproduction-energy-cost;
+    hatch 1 [
+      set energy reproduction-energy-cost * reproduction-efficiency
+    ]
   ]
 end
 
 
 to go
-  ;if ticks = 500 [stop] ; Stop at tick 500
+  if ticks = max-ticks [
+    print word "Hare population: " count hares
+    print word "Lynx population: " count lynxes
+    print word "Grass population: " count patches with [pcolor = green]
 
-  ;if count hares = 0 [stop] ; Stop when hares died out
-  ;if count lynxes = 0 [stop] ; Stop when lynxes died out
-  ;if count patches with [pcolor = green] = 0 [stop] ; Stop when food runs out
+    stop
 
+  ]
   ask hares[
     move
     eat-plants
@@ -87,6 +104,10 @@ to go
     eat-prey
     starve
     reproduce
+  ]
+
+  if is_seasonal [
+    set grass-regrowth-time grass-regrowth-time-base + season-amplitude * sin(season-speed * ticks)
   ]
 
   ask patches [
@@ -106,13 +127,13 @@ to go
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-389
-40
-903
-555
+420
+50
+883
+514
 -1
 -1
-15.33333333333334
+7.0
 1
 10
 1
@@ -122,20 +143,20 @@ GRAPHICS-WINDOW
 1
 1
 1
--16
-16
--16
-16
-0
-0
+-32
+32
+-32
+32
+1
+1
 1
 ticks
 30.0
 
 BUTTON
-26
+25
 85
-196
+124
 118
 Setup
 setup
@@ -150,9 +171,9 @@ NIL
 1
 
 BUTTON
-208
+149
 85
-379
+233
 118
 Go
 go
@@ -167,10 +188,10 @@ NIL
 1
 
 SLIDER
-25
-153
-197
-186
+31
+173
+203
+206
 initial-hares
 initial-hares
 0
@@ -182,85 +203,85 @@ NIL
 HORIZONTAL
 
 SLIDER
-207
-153
-379
-186
+213
+173
+385
+206
 initial-lynxes
 initial-lynxes
 0
 100
-50.0
+100.0
 1
 1
 NIL
 HORIZONTAL
 
 SLIDER
-24
-211
-196
-244
-grass-regrowth-time
-grass-regrowth-time
+30
+232
+200
+265
+grass-regrowth-time-base
+grass-regrowth-time-base
 0
 100
-50.0
+30.0
 1
 1
 NIL
 HORIZONTAL
 
 SLIDER
-23
-330
-195
-363
+29
+354
+201
+387
 reproduction-chance
 reproduction-chance
 0
 100
-17.0
+20.0
 1
 1
 NIL
 HORIZONTAL
 
 SLIDER
-207
-330
-378
-363
+213
+354
+384
+387
 reproduction-energy-threshold
 reproduction-energy-threshold
 0
 100
-78.0
+75.0
 1
 1
 NIL
 HORIZONTAL
 
 SLIDER
-207
-210
-379
-243
+214
+231
+386
+264
 grass-regrowth-chance
 grass-regrowth-chance
 0
 100
-81.0
+66.0
 1
 1
 NIL
 HORIZONTAL
 
 PLOT
-23
-386
-196
-506
+21
+574
+891
+771
 Population Count
 NIL
 NIL
@@ -269,17 +290,19 @@ NIL
 0.0
 10.0
 true
-false
+true
 "" ""
 PENS
 "hares" 1.0 0 -11033397 true "" "plot count hares"
 "lynxes" 1.0 0 -2674135 true "" "plot count lynxes"
+"grass / 8" 1.0 0 -8732573 true "" "plot count patches with [pcolor = green] / 8"
+"grass rate" 1.0 0 -14439633 true "" "plot grass-regrowth-time * 10"
 
 SLIDER
-23
-271
-195
-304
+29
+292
+201
+325
 grass-energy-gain
 grass-energy-gain
 0
@@ -291,120 +314,161 @@ NIL
 HORIZONTAL
 
 SLIDER
-208
-270
-380
-303
+214
+291
+386
+324
 prey-energy-gain
 prey-energy-gain
 0
 100
-30.0
+25.0
 1
 1
 NIL
 HORIZONTAL
 
 TEXTBOX
-26
-132
-176
-150
+32
+152
+182
+170
 Initialization
 14
 0.0
 1
 
 TEXTBOX
-25
-191
-175
-209
+31
+212
+181
+230
 Grass Settings
 14
 0.0
 1
 
 TEXTBOX
-25
-251
-175
-269
+31
+272
+181
+290
 Energy Gain Settings
 14
 0.0
 1
 
 TEXTBOX
-25
-311
-175
-329
+31
+335
+181
+353
 Reproduction Settings
 14
 0.0
 1
 
 TEXTBOX
-92
-42
-385
-79
+94
+44
+387
+81
 Hare-Lynx Ecosystem
 24
 0.0
 1
 
-PLOT
-208
-386
-378
-506
-Food Count
+SLIDER
+29
+394
+201
+427
+reproduction-energy-cost
+reproduction-energy-cost
+0
+100
+40.0
+1
+1
 NIL
+HORIZONTAL
+
+SWITCH
+29
+461
+201
+494
+is_seasonal
+is_seasonal
+0
+1
+-1000
+
+TEXTBOX
+29
+437
+179
+455
+Season Settings
+14
+0.0
+1
+
+SLIDER
+218
+464
+390
+497
+season-amplitude
+season-amplitude
+0
+10
+10.0
+.1
+1
 NIL
-0.0
-10.0
-0.0
-10.0
-true
-false
-"" ""
-PENS
-"default" 1.0 0 -14439633 true "" "plot count patches with [pcolor = green]"
+HORIZONTAL
 
-MONITOR
-112
-510
-196
-555
-Hares
-count hares
-17
+SLIDER
+219
+505
+391
+538
+season-speed
+season-speed
+0.01
 1
-11
+1.0
+.01
+1
+NIL
+HORIZONTAL
 
-MONITOR
-22
-510
-108
-555
-Lynxes
-count lynxes
-17
+INPUTBOX
+262
+87
+381
+147
+max-ticks
+-1.0
 1
-11
+0
+Number
 
-MONITOR
-208
-511
-379
-556
-Food Count
-count patches with [pcolor = green]
-17
+SLIDER
+212
+395
+388
+428
+reproduction-efficiency
+reproduction-efficiency
+0
 1
-11
+0.75
+0.01
+1
+NIL
+HORIZONTAL
 
 @#$#@#$#@
 ## WHAT IS IT?
@@ -765,5 +829,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@
