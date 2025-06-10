@@ -400,7 +400,7 @@ SWITCH
 494
 is_seasonal
 is_seasonal
-0
+1
 1
 -1000
 
@@ -438,7 +438,7 @@ season-speed
 season-speed
 0.01
 1
-1.0
+0.15
 .01
 1
 NIL
@@ -450,7 +450,7 @@ INPUTBOX
 381
 147
 max-ticks
--1.0
+500.0
 1
 0
 Number
