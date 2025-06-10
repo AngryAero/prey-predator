@@ -1,5 +1,7 @@
 # Prey-Predator Ecosystems - Simulating the Snowshoe Hare & Canada Lynx
 
+The **Snowshoe Hare and Canada Lynx ecosystem** is a classic example of a predator-prey relationship found primarily in the boreal forests of North America. The **Snowshoe Hare** serves as the primary prey for the **Canada Lynx**, whose population size closely follows that of the hare in a cyclical pattern. When hare populations rise due to abundant food and favorable conditions, lynx numbers also increase as food becomes more available. Over time, hare populations decline, which is followed by a decline in lynx numbers due to food scarcity. This tightly coupled dynamic, driven by energy transfer and reproduction rates, illustrates the delicate balance and interdependence in natural ecosystems.
+
 ## Agents
 
 ### Hares (Preys)
